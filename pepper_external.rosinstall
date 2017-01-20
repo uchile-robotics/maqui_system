@@ -37,3 +37,13 @@
     local-name: naoqi_dcm_driver
     uri: https://github.com/ros-naoqi/naoqi_dcm_driver.git
     version: master
+
+- git:
+    local-name: naoqi_bridge
+    uri: https://github.com/ros-naoqi/naoqi_bridge.git
+    version: master
+
+- git:
+    local-name: naoqi_driver
+    uri: https://github.com/ros-naoqi/naoqi_driver.git
+    version: master
