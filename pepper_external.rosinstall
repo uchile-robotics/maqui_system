@@ -1,0 +1,39 @@
+- git:
+    local-name: pepper_dcm_robot
+    uri: https://github.com/ros-naoqi/pepper_dcm_robot.git
+    version: master
+
+- git:
+    local-name: pepper_virtual
+    uri: https://github.com/ros-naoqi/pepper_virtual.git
+    version: master
+
+- git:
+    local-name: naoqi_bridge_msgs
+    uri: https://github.com/ros-naoqi/naoqi_bridge_msgs.git
+    version: master
+
+- git:
+    local-name: pepper_robot
+    uri: https://github.com/ros-naoqi/pepper_robot.git
+    version: master
+
+- git:
+    local-name: pepper_moveit_config
+    uri: https://github.com/ros-naoqi/pepper_moveit_config.git
+    version: master
+
+- git:
+    local-name: pepper_robot
+    uri: https://github.com/ros-naoqi/pepper_robot.git
+    version: master
+
+- git:
+    local-name: pepper_meshes
+    uri: https://github.com/ros-naoqi/pepper_meshes.git
+    version: master
+
+- git:
+    local-name: naoqi_dcm_driver
+    uri: https://github.com/ros-naoqi/naoqi_dcm_driver.git
+    version: master
