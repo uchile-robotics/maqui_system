@@ -6,7 +6,7 @@
 - git:
     local-name: pepper_virtual
     uri: https://github.com/uchile-robotics/pepper_virtual.git
-    version: master
+    version: develop
 
 - git:
     local-name: naoqi_bridge_msgs
@@ -16,7 +16,7 @@
 - git:
     local-name: pepper_robot
     uri: https://github.com/ros-naoqi/pepper_robot.git
-    version: master
+    version: develop
 
 - git:
     local-name: pepper_moveit_config
@@ -26,7 +26,7 @@
 - git:
     local-name: pepper_robot
     uri: https://github.com/uchile-robotics/pepper_robot.git
-    version: master
+    version: develop
 
 - git:
     local-name: pepper_meshes
@@ -47,3 +47,14 @@
     local-name: naoqi_driver
     uri: https://github.com/ros-naoqi/naoqi_driver.git
     version: master
+
+- git:
+    local-name: roboticsgroup_gazebo_plugins
+    uri: https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
+    version: master
+
+- git:
+    local-name: hector_gazebo
+    uri: https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git
+    version: indigo-devel
+
