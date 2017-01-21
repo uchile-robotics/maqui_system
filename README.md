@@ -24,7 +24,7 @@ Para averiguar la IP asignada a la máquina virtual se puede usar el comando `ì
 
 
 ```
-wget https://raw.githubusercontent.com/uchile-robotics/pepper_system/master/pepper_install.sh
+wget https://raw.githubusercontent.com/uchile-robotics/pepper_system/master/pepper_internal_installer.sh
 chmod +x pepper_install.sh
 ./pepper_install.sh
 ```
