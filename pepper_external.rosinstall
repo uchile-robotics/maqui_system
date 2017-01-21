@@ -5,7 +5,7 @@
 
 - git:
     local-name: pepper_virtual
-    uri: https://github.com/ros-naoqi/pepper_virtual.git
+    uri: https://github.com/uchile-robotics/pepper_virtual.git
     version: master
 
 - git:
@@ -25,7 +25,7 @@
 
 - git:
     local-name: pepper_robot
-    uri: https://github.com/ros-naoqi/pepper_robot.git
+    uri: https://github.com/uchile-robotics/pepper_robot.git
     version: master
 
 - git:
