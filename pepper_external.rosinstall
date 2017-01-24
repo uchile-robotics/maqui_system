@@ -53,8 +53,3 @@
     uri: https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
     version: master
 
-- git:
-    local-name: hector_gazebo
-    uri: https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git
-    version: indigo-devel
-
