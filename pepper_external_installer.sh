@@ -16,4 +16,8 @@ echo "source ~/pepper_ws/devel/setup.bash" >> ~/.bashrc
 ./devel/tmp/installer.run
 
 # Test in a new terminal
+# Open Rviz with Pepper model
 roslaunch pepper_description display.launch
+# Open Gazebo with Pepper robot
+# Remember kill "Gazebo controllers" terminal first
+roslaunch pepper_gazebo_plugin pepper_gazebo.launch
