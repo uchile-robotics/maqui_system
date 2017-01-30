@@ -48,8 +48,3 @@
     uri: https://github.com/ros-naoqi/naoqi_driver.git
     version: master
 
-- git:
-    local-name: roboticsgroup_gazebo_plugins
-    uri: https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
-    version: master
-
