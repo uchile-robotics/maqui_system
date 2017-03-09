@@ -1,5 +1,5 @@
-Instalación ROS OpenNao VM
---------------------------
+Configuración OpenNao VM
+-------------------------
 
 [Documentación oficial](http://doc.aldebaran.com/1-14/dev/tools/vm-setup.html)
 
@@ -20,11 +20,13 @@ Si se usa modo de red en puente la máquina adquiere una IP en la misma subred q
 ssh nao@[VM-IP] -p 22
 ```
 
-Para averiguar la IP asignada a la máquina virtual se puede usar el comando `ìfconfig`. Una vez abierta la sesión, se deben ejecutar los siguientes comandos en la máquina virtual:
+Para averiguar la IP asignada a la máquina virtual se puede usar el comando `ìfconfig`.
 
+Instalación ROS OpenNao VM
+--------------------------
 
 ```
-wget https://raw.githubusercontent.com/uchile-robotics/pepper_system/master/pepper_internal_installer.sh
-chmod +x pepper_install.sh
-./pepper_install.sh
+wget https://raw.githubusercontent.com/uchile-robotics/maqui_system/master/maqui_internal_installer.sh
+chmod +x maqui_internal_installer.sh
+./maqui_internal_installer.sh
 ```

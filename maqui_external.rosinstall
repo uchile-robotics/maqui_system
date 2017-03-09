@@ -2,7 +2,7 @@
     local-name: pepper_dcm_robot
     uri: https://github.com/ros-naoqi/pepper_dcm_robot.git
     version: master
-
+# UChile fork
 - git:
     local-name: pepper_virtual
     uri: https://github.com/uchile-robotics/pepper_virtual.git
@@ -22,7 +22,7 @@
     local-name: pepper_moveit_config
     uri: https://github.com/ros-naoqi/pepper_moveit_config.git
     version: master
-
+# UChile fork
 - git:
     local-name: pepper_robot
     uri: https://github.com/uchile-robotics/pepper_robot.git
@@ -46,5 +46,17 @@
 - git:
     local-name: naoqi_driver
     uri: https://github.com/ros-naoqi/naoqi_driver.git
+    version: master
+
+# Maqui robot
+
+- git:
+    local-name: maqui_core
+    uri: https://github.com/uchile-robotics/maqui_core.git
+    version: master
+
+- git:
+    local-name: maqui_sim
+    uri: https://github.com/uchile-robotics/maqui_sim.git
     version: master
 

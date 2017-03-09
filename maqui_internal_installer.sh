@@ -25,7 +25,6 @@ cmake ..
 make
 sudo make install
 
-
 # libqi 2.3, newest version required -std=gnu++11
 cd ~/pepper_dep
 wget https://github.com/aldebaran/libqi/archive/v2.3.tar.gz -O libqi-2.3.tar.gz
