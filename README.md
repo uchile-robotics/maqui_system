@@ -1,3 +1,10 @@
+Instalación Robot Maqui
+-----------------------
+
+```
+wget -q -O - git.io/maqui | bash
+```
+
 Configuración OpenNao VM
 -------------------------
 
