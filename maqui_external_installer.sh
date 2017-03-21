@@ -2,12 +2,17 @@
 
 mkdir -p maqui_ws/src
 cd maqui_ws
+
 # Add repositories
 wstool init src https://raw.githubusercontent.com/uchile-robotics/maqui_system/master/maqui_external.rosinstall
+
 # Install system and ROS dependencies
 rosdep install -i -y --from-paths src
+
 # Build
+sudo apt-get install python-catkin-tools
 catkin build --summarize
+
 # Add source file to bashrc (bash user)
 echo "source ~/maqui_ws/devel/setup.bash" >> ~/.bashrc
 # zsh users
