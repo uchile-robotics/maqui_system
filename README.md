@@ -1,12 +1,47 @@
-Instalación Robot Maqui
------------------------
+# Maqui system
 
-```
-wget -q -O - git.io/maqui | bash
+Este repositorio contiene los scripts para instalar los packages de ROS para trabajar con el robot Maqui (Pepper, Softbank Robotics) y para su simulación.
+
+
+## Instalación de paquetes para Maqui
+
+Se utiliza el script `maqui_external_installer.sh`. 
+
+```bash
+# descargar y ejecutar maqui_external_installer.sh
+wget -q -O - https://raw.githubusercontent.com/uchile-robotics/maqui_system/master/maqui_external_installer.sh | bash
+
+# build
+sudo apt-get install python-catkin-tools
+catkin build --summarize
 ```
 
-Configuración OpenNao VM
--------------------------
+Luego, se debe modificar el archivo de inicio de la consola de interés:
+```
+# ejecutar para la consola de interés: (bash o zsh)
+echo "source ~/maqui_ws/devel/setup.bash" >> ~/.bashrc
+echo "source ~/maqui_ws/devel/setup.zsh" >> ~/.zshrc
+```
+
+E instalar lo que falta:
+```
+# Install Pepper meshes on maqui_ws/src/pepper_meshes
+./devel/tmp/installer.run --prefix ~/maqui_ws/src/pepper_meshes --mode unattended
+```
+
+### Revisar instalación:
+
+```bash
+# Test in a new terminal
+# Open RViz with Pepper model
+roslaunch pepper_description display.launch
+
+# Open Gazebo with Pepper robot
+# Remember kill "Gazebo controllers" terminal first
+roslaunch maqui_sim maqui.launch
+```
+
+## Configuración de máquina virtual OpenNaoVM en virtualbox
 
 [Documentación oficial](http://doc.aldebaran.com/1-14/dev/tools/vm-setup.html)
 
