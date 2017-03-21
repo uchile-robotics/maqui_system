@@ -16,15 +16,14 @@ sudo apt-get install python-catkin-tools
 catkin build --summarize
 ```
 
-Luego, se debe modificar el archivo de inicio de la consola de interés:
-```
-# ejecutar para la consola de interés: (bash o zsh)
+Luego, se debe modificar el archivo de inicio de la consola de interés (bash o zsh):
+```bash
 echo "source ~/maqui_ws/devel/setup.bash" >> ~/.bashrc
 echo "source ~/maqui_ws/devel/setup.zsh" >> ~/.zshrc
 ```
 
 E instalar lo que falta:
-```
+```bash
 # Install Pepper meshes on maqui_ws/src/pepper_meshes
 ./devel/tmp/installer.run --prefix ~/maqui_ws/src/pepper_meshes --mode unattended
 ```
