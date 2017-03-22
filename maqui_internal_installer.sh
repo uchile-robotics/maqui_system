@@ -7,6 +7,7 @@ mkdir pepper_dep
 
 # qibuild 3.8.3, newest version required CMake 2.8.12
 cd ~/pepper_dep
+# fork: https://github.com/uchile-robotics/qibuild/archive/v3.8.3.tar.gz
 wget https://github.com/aldebaran/qibuild/archive/v3.8.3.tar.gz -O qibuild-3.8.3.tar.gz
 tar -xvzf qibuild-3.8.3.tar.gz
 mkdir qibuild-3.8.3/build
@@ -17,6 +18,7 @@ sudo make install
 
 # libqiprobes 2.4
 cd ~/pepper_dep
+# fork: https://github.com/uchile-robotics/libqiprobes
 wget https://github.com/aldebaran/libqiprobes/archive/release-2.4.tar.gz -O libqiprobes-2.4.tar.gz
 tar -xvzf libqiprobes-2.4.tar.gz
 mkdir libqiprobes-release-2.4/build
@@ -27,6 +29,7 @@ sudo make install
 
 # libqi 2.3, newest version required -std=gnu++11
 cd ~/pepper_dep
+# https://github.com/uchile-robotics/libqi
 wget https://github.com/aldebaran/libqi/archive/v2.3.tar.gz -O libqi-2.3.tar.gz
 tar -xvzf libqi-2.3.tar.gz
 mkdir libqi-2.3/build
@@ -34,6 +37,7 @@ cd libqi-2.3/build
 cmake -DQI_WITH_TESTS=OFF ..
 make
 sudo make install
+
 
 # ROS deps
 #--------------------------------
@@ -105,6 +109,7 @@ sudo make install
 
 # yaml cpp
 cd ~/pepper_dep
+# fork: https://github.com/uchile-robotics/yaml-cpp
 wget https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.5.3.tar.gz
 tar -xvzf yaml-cpp-0.5.3.tar.gz
 mkdir yaml-cpp-yaml-cpp-0.5.3/build
@@ -115,6 +120,7 @@ sudo make install
 
 # tinyxml
 cd ~/pepper_dep
+# MISSING!
 wget https://github.com/dartsim/tinyxml/archive/master.zip -O tinyxml.zip
 unzip tinyxml.zip
 mkdir tinyxml-master/build
@@ -125,6 +131,7 @@ sudo make install
 
 # console bridge
 cd ~/pepper_dep
+# fork: https://github.com/uchile-robotics/console_bridge
 wget https://github.com/ros/console_bridge/archive/0.2.5.tar.gz -O console_bridge-0.2.5.tar.gz
 tar -xvzf console_bridge-0.2.5.tar.gz
 mkdir console_bridge-0.2.5/build
@@ -135,6 +142,7 @@ sudo make install
 
 # lz4
 cd ~/pepper_dep
+# fork: https://github.com/uchile-robotics/lz4
 wget https://github.com/lz4/lz4/archive/r131.tar.gz -O lz4-r131.tar.gz
 tar -xvzf lz4-r131.tar.gz
 cd lz4-r131/
@@ -152,6 +160,7 @@ sudo make install
 
 # gtest
 cd ~/pepper_dep
+# fork: https://github.com/uchile-robotics/googletest
 wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz
 tar -xvzf release-1.7.0.tar.gz
 cd googletest-release-1.7.0/
@@ -162,6 +171,7 @@ sudo cp -a libgtest_main.so libgtest.so /usr/lib/
 
 # eigen
 cd ~/pepper_dep
+# fork: https://bitbucket.org/uchile-robotics-die/eigen
 wget http://bitbucket.org/eigen/eigen/get/3.3.1.tar.gz -O eigen-3.3.1.tar.gz
 tar -xvzf eigen-3.3.1.tar.gz
 mkdir eigen-eigen-f562a193118d/build
@@ -172,6 +182,7 @@ sudo make install
 
 # collada dom
 cd ~/pepper_dep
+# fork: https://github.com/uchile-robotics/collada-dom
 wget https://github.com/rdiankov/collada-dom/archive/v2.4.4.tar.gz -O collada-dom-2.4.4.tar.gz
 tar -xvzf collada-dom-2.4.4.tar.gz
 mkdir collada-dom-2.4.4/build
@@ -182,6 +193,7 @@ sudo make install
 
 # urdfdom_headers
 cd ~/pepper_dep
+# fork: https://github.com/uchile-robotics/urdfdom_headers
 wget https://github.com/ros/urdfdom_headers/archive/0.2.3.tar.gz -O urdfdom_headers-0.2.3.tar.gz
 tar -xvzf urdfdom_headers-0.2.3.tar.gz
 mkdir urdfdom_headers-0.2.3/build
@@ -192,6 +204,7 @@ sudo make install
 
 # urdf dom
 cd ~/pepper_dep
+# fork: https://github.com/uchile-robotics/urdfdom_headers
 wget https://github.com/ros/urdfdom/archive/0.2.10.tar.gz -O urdfdom-0.2.10.tar.gz
 tar -xvzf urdfdom-0.2.10.tar.gz
 mkdir urdfdom-0.2.10/build
@@ -204,6 +217,7 @@ sudo make install
 
 # netifaces
 cd ~/pepper_dep
+# fork: https://bitbucket.org/uchile-robotics-die/netifaces
 wget https://bitbucket.org/al45tair/netifaces/get/release_0_10_4.tar.gz -O netifaces-0.10.4.tar.gz
 tar -xvzf netifaces-0.10.4.tar.gz
 cd al45tair-netifaces-1d6d179f8bce/
