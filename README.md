@@ -87,7 +87,11 @@ Se recomienda configurar la VM para usar el modo de red en *Adaptador puente* (M
 
 Luego, para acceder a la VM desde otra máquina, o desde el mismo host, ya no se puede usar `localhost`, sino que acceder a la IP asignada mediante el puerto `22`. 
 ```bash
+# ssh
 ssh nao@[VM-IP] -p 22
+
+# sftp
+nautilus sftp://nao@[VM-IP]:22
 ```
 
 
