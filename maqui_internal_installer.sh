@@ -9,7 +9,7 @@ mkdir pepper_dep
 cd ~/pepper_dep
 wget https://github.com/uchile-robotics-forks/qibuild/archive/v3.8.3.tar.gz -O qibuild-3.8.3.tar.gz
 tar -xvzf qibuild-3.8.3.tar.gz
-mkdir qibuild-3.8.3/build
+mkdir -p qibuild-3.8.3/build
 cd qibuild-3.8.3/build
 cmake ..
 make
@@ -19,7 +19,7 @@ sudo make install
 cd ~/pepper_dep
 wget https://github.com/uchile-robotics-forks/libqiprobes/archive/release-2.4.tar.gz -O libqiprobes-2.4.tar.gz
 tar -xvzf libqiprobes-2.4.tar.gz
-mkdir libqiprobes-release-2.4/build
+mkdir -p libqiprobes-release-2.4/build
 cd libqiprobes-release-2.4/build
 cmake ..
 make
@@ -29,7 +29,7 @@ sudo make install
 cd ~/pepper_dep
 wget https://github.com/uchile-robotics-forks/libqi/archive/v2.3.tar.gz -O libqi-2.3.tar.gz
 tar -xvzf libqi-2.3.tar.gz
-mkdir libqi-2.3/build
+mkdir -p libqi-2.3/build
 cd libqi-2.3/build
 cmake -DQI_WITH_TESTS=OFF ..
 make
@@ -108,7 +108,7 @@ sudo make install
 cd ~/pepper_dep
 wget https://github.com/uchile-robotics-forks/yaml-cpp/archive/yaml-cpp-0.5.3.tar.gz
 tar -xvzf yaml-cpp-0.5.3.tar.gz
-mkdir yaml-cpp-yaml-cpp-0.5.3/build
+mkdir -p yaml-cpp-yaml-cpp-0.5.3/build
 cd yaml-cpp-yaml-cpp-0.5.3/build
 cmake .. -DBUILD_SHARED_LIBS=ON
 make
@@ -118,7 +118,7 @@ sudo make install
 cd ~/pepper_dep
 wget https://github.com/uchile-robotics-forks/tinyxml/archive/v2.6.2.tar.gz -O tinyxml-2.6.2.tar.gz
 tar -xvzf tinyxml-2.6.2.tar.gz
-mkdir tinyxml-2.6.2/build
+mkdir -p tinyxml-2.6.2/build
 cd tinyxml-2.6.2/build
 cmake ..
 make
@@ -128,7 +128,7 @@ sudo make install
 cd ~/pepper_dep
 wget https://github.com/uchile-robotics-forks/console_bridge/archive/0.2.5.tar.gz -O console_bridge-0.2.5.tar.gz
 tar -xvzf console_bridge-0.2.5.tar.gz
-mkdir console_bridge-0.2.5/build
+mkdir -p console_bridge-0.2.5/build
 cd console_bridge-0.2.5/build
 cmake ..
 make
@@ -165,7 +165,7 @@ sudo cp -a libgtest_main.so libgtest.so /usr/lib/
 cd ~/pepper_dep
 wget http://bitbucket.org/eigen/eigen/get/3.3.1.tar.gz -O eigen-3.3.1.tar.gz
 tar -xvzf eigen-3.3.1.tar.gz
-mkdir eigen-eigen-f562a193118d/build
+mkdir -p eigen-eigen-f562a193118d/build
 cd eigen-eigen-f562a193118d/build
 cmake ..
 make
@@ -175,7 +175,7 @@ sudo make install
 cd ~/pepper_dep
 wget https://github.com/rdiankov/collada-dom/archive/v2.4.4.tar.gz -O collada-dom-2.4.4.tar.gz
 tar -xvzf collada-dom-2.4.4.tar.gz
-mkdir collada-dom-2.4.4/build
+mkdir -p collada-dom-2.4.4/build
 cd collada-dom-2.4.4/build
 cmake ..
 make
@@ -185,7 +185,7 @@ sudo make install
 cd ~/pepper_dep
 wget https://github.com/ros/urdfdom_headers/archive/0.2.3.tar.gz -O urdfdom_headers-0.2.3.tar.gz
 tar -xvzf urdfdom_headers-0.2.3.tar.gz
-mkdir urdfdom_headers-0.2.3/build
+mkdir -p urdfdom_headers-0.2.3/build
 cd urdfdom_headers-0.2.3/build
 cmake ..
 make
@@ -195,7 +195,7 @@ sudo make install
 cd ~/pepper_dep
 wget https://github.com/ros/urdfdom/archive/0.2.10.tar.gz -O urdfdom-0.2.10.tar.gz
 tar -xvzf urdfdom-0.2.10.tar.gz
-mkdir urdfdom-0.2.10/build
+mkdir -p urdfdom-0.2.10/build
 cd urdfdom-0.2.10/build
 cmake ..
 sudo make install
