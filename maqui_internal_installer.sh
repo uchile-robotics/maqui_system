@@ -115,10 +115,9 @@ sudo make install
 
 # tinyxml
 cd ~/pepper_dep
-wget https://github.com/dartsim/tinyxml/archive/master.zip -O tinyxml.zip
-unzip tinyxml.zip
-mkdir tinyxml-master/build
-cd tinyxml-master/build
+git clone https://github.com/uchile-robotics-forks/tinyxml.git tinyxml
+mkdir tinyxml/build
+cd tinyxml/build
 cmake ..
 make
 sudo make install
