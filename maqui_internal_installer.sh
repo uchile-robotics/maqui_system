@@ -31,7 +31,7 @@ wget https://github.com/uchile-robotics-forks/libqi/archive/v2.3.tar.gz -O libqi
 tar -xvzf libqi-2.3.tar.gz
 mkdir -p libqi-2.3/build
 cd libqi-2.3/build
-cmake -DQI_WITH_TESTS=OFF ..
+cmake .. -DQI_WITH_TESTS=OFF
 make
 sudo make install
 
