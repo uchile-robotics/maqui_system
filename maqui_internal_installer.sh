@@ -39,35 +39,35 @@ sudo make install
 # ROS deps
 #--------------------------------
 
-# m4
+# m4 1.4.16
 cd ~/pepper_dep
-wget https://ftp.gnu.org/gnu/m4/m4-1.4.tar.gz
+wget https://ftp.gnu.org/gnu/m4/m4-1.4.16.tar.gz
 tar -xvzf m4-1.4.tar.gz 
-cd m4-1.4
-./configure 
-make
-sudo make install
-
-# autoconf
-cd ~/pepper_dep
-wget https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
-tar -xvzf autoconf-2.69.tar.gz 
-cd autoconf-2.69
-ls
-./configure 
-make
-sudo make install
-
-# automake
-cd ~/pepper_dep
-wget http://git.savannah.gnu.org/cgit/automake.git/snapshot/automake-1.15.tar.gz
-tar -xvzf automake-1.15.tar.gz
-cd automake-1.15
+cd m4-1.4.16
 ./configure
 make
 sudo make install
 
-# libtool
+# autoconf 2.69
+cd ~/pepper_dep
+wget https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
+tar -xvzf autoconf-2.69.tar.gz 
+cd autoconf-2.69
+./configure
+make
+sudo make install
+
+# automake 1.15
+cd ~/pepper_dep
+wget http://git.savannah.gnu.org/cgit/automake.git/snapshot/automake-1.15.tar.gz
+tar -xvzf automake-1.15.tar.gz
+cd automake-1.15
+./bootstrap.sh
+./configure
+make
+sudo make install
+
+# libtool 2.4.6
 cd ~/pepper_dep
 wget https://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.gz
 tar -xvzf libtool-2.4.6.tar.gz 
@@ -76,17 +76,7 @@ cd libtool-2.4.6
 make
 sudo make install
 
-# Apache log4cxx
-cd ~/pepper_dep
-wget https://github.com/apache/log4cxx/archive/v0_10_0.tar.gz -O apache-log4cxx-0.10.0.tar.gz
-tar -xvzf apache-log4cxx-0.10.0.tar.gz
-cd log4cxx-0_10_0/
-./autogen.sh
-./configure
-make
-sudo make install
-
-# APR
+# apr 1.5.2
 cd ~/pepper_dep
 wget http://www-eu.apache.org/dist/apr/apr-1.5.2.tar.gz
 tar -xvzf apr-1.5.2.tar.gz
@@ -95,12 +85,22 @@ cd apr-1.5.2/
 make
 sudo make install
 
-# APR Util
+# apr util 1.5.4
 cd ~/pepper_dep
 wget http://www-us.apache.org/dist/apr/apr-util-1.5.4.tar.gz
 tar -xvzf apr-util-1.5.4.tar.gz
 cd apr-util-1.5.4/
 ./configure --with-apr=/usr/local/apr
+make
+sudo make install
+
+# Apache log4cxx
+# @TODO Test with realease
+cd ~/pepper_dep
+git clone https://github.com/uchile-robotics-forks/log4cxx
+cd log4cxx-0.11
+./autogen.sh
+./configure
 make
 sudo make install
 
@@ -124,7 +124,7 @@ cmake ..
 make
 sudo make install
 
-# console bridge
+# console bridge 0.2.5
 cd ~/pepper_dep
 wget https://github.com/uchile-robotics-forks/console_bridge/archive/0.2.5.tar.gz -O console_bridge-0.2.5.tar.gz
 tar -xvzf console_bridge-0.2.5.tar.gz
@@ -134,7 +134,7 @@ cmake ..
 make
 sudo make install
 
-# lz4
+# lz4 r131
 cd ~/pepper_dep
 wget https://github.com/lz4/lz4/archive/r131.tar.gz -O lz4-r131.tar.gz
 tar -xvzf lz4-r131.tar.gz
@@ -142,7 +142,7 @@ cd lz4-r131/
 make
 sudo make install
 
-# poco
+# poco 1.6.1
 cd ~/pepper_dep
 wget http://pocoproject.org/releases/poco-1.6.1/poco-1.6.1.tar.gz
 tar -xvzf poco-1.6.1.tar.gz
@@ -151,12 +151,12 @@ cd poco-1.6.1/
 make
 sudo make install
 
-# gtest
+# gtest 1.7.0
 cd ~/pepper_dep
 wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz
 tar -xvzf release-1.7.0.tar.gz
 cd googletest-release-1.7.0/
-cmake -DBUILD_SHARED_LIBS=ON .
+cmake . -DBUILD_SHARED_LIBS=ON
 make
 sudo cp -a include/gtest /usr/include
 sudo cp -a libgtest_main.so libgtest.so /usr/lib/
@@ -219,9 +219,9 @@ python configure.py
 make
 sudo make install
 
-
-sudo pip install -U setuptools
 sudo pip install -U pip
+sudo pip install -U six
+sudo pip install -U setuptools
 sudo pip install -U catkin_pkg rosdep rosinstall_generator wstool rosinstall empy nose rosinstall pillow mock coverage rospkg
 
 # ROS Base
@@ -239,9 +239,12 @@ export ROS_HOSTNAME=localhost
 source ${ROS_INSTALL_PREFIX}/indigo/setup.bash
 EOF
 
+# Expect error on ros setup bash
 source ~/.bash_profile
 mkdir -p /home/nao/ros/ros_catkin_ws/src
 cd ${ROS_INSTALL_PREFIX}/ros_catkin_ws
 rosinstall_generator ros_base robot_state_publisher --rosdistro indigo --deps --tar --exclude rviz > pepper_indigo.rosinstall
 wstool init src pepper_indigo.rosinstall
 ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_INSTALL_PREFIX}/indigo -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
+# Update ROS paths
+source ~/.bash_profile
