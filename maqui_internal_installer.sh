@@ -113,11 +113,12 @@ cmake .. -DBUILD_SHARED_LIBS=ON
 make
 sudo make install
 
-# tinyxml
+# tinyxml 2.6.2
 cd ~/pepper_dep
-git clone https://github.com/uchile-robotics-forks/tinyxml.git tinyxml
-mkdir tinyxml/build
-cd tinyxml/build
+wget https://github.com/uchile-robotics-forks/tinyxml/archive/v2.6.2.tar.gz -O tinyxml-2.6.2.tar.gz
+tar -xvzf tinyxml-2.6.2.tar.gz
+mkdir tinyxml-2.6.2/build
+cd tinyxml-2.6.2/build
 cmake ..
 make
 sudo make install
