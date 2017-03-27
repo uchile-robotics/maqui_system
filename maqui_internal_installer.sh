@@ -42,7 +42,7 @@ sudo make install
 # m4 1.4.16
 cd ~/pepper_dep
 wget https://ftp.gnu.org/gnu/m4/m4-1.4.16.tar.gz
-tar -xvzf m4-1.4.tar.gz 
+tar -xvzf m4-1.4.16.tar.gz
 cd m4-1.4.16
 ./configure
 make
