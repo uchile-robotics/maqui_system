@@ -101,8 +101,6 @@ nautilus sftp://nao@[VM-IP]:22
 
 Ejecutar lo siguiente en una terminal de la máquina virtual.
 ```bash
-wget https://raw.githubusercontent.com/uchile-robotics/maqui_system/master/maqui_internal_installer.sh
-chmod +x maqui_internal_installer.sh
-./maqui_internal_installer.sh
+wget -q -O - https://raw.githubusercontent.com/uchile-robotics/maqui_system/master/maqui_internal_installer.sh | bash
 ```
 
