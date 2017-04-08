@@ -12,6 +12,7 @@ Se utiliza el script `maqui_external_installer.sh`.
 wget -q -O - https://raw.githubusercontent.com/uchile-robotics/maqui_system/master/maqui_external_installer.sh | bash
 
 # build
+cd maqui_ws
 sudo apt-get install python-catkin-tools
 catkin build --summarize
 ```
