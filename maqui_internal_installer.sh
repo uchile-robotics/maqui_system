@@ -98,7 +98,7 @@ sudo make install
 # @TODO Test with realease
 cd ~/pepper_dep
 git clone https://github.com/uchile-robotics-forks/log4cxx
-cd log4cxx-0.11
+cd log4cxx
 ./autogen.sh
 ./configure
 make
