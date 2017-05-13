@@ -203,14 +203,6 @@
     uri: https://github.com/ros-gbp/metapackages-release/archive/release/indigo/ros_core/1.1.5-0.tar.gz
     version: metapackages-release-release-indigo-ros_core-1.1.5-0
 - tar:
-    local-name: naoqi_libqi
-    uri: https://github.com/ros-naoqi/libqi-release/archive/release/indigo/naoqi_libqi/2.3.0-2.tar.gz
-    version: libqi-release-release-indigo-naoqi_libqi-2.3.0-2
-- tar:
-    local-name: naoqi_libqicore
-    uri: https://github.com/ros-naoqi/libqicore-release/archive/release/indigo/naoqi_libqicore/2.3.1-3.tar.gz
-    version: libqicore-release-release-indigo-naoqi_libqicore-2.3.1-3
-- tar:
     local-name: nodelet_core/nodelet
     uri: https://github.com/ros-gbp/nodelet_core-release/archive/release/indigo/nodelet/1.9.10-0.tar.gz
     version: nodelet_core-release-release-indigo-nodelet-1.9.10-0
