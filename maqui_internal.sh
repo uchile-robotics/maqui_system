@@ -141,7 +141,7 @@ wget https://github.com/uchile-robotics-forks/yaml-cpp/archive/yaml-cpp-0.5.3.ta
 tar -xvzf yaml-cpp-0.5.3.tar.gz
 mkdir -p yaml-cpp-yaml-cpp-0.5.3/build
 cd yaml-cpp-yaml-cpp-0.5.3/build
-cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=/home/nao/ros/indigo 
+cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=${ROBOT_ROOT}/usr 
 make
 make install
 _check_errno $? "yaml cpp"
@@ -279,7 +279,7 @@ _check_errno $? "sip"
 
 # ROS deps
 pip install -U catkin_pkg rosdep rosinstall_generator wstool rosinstall empy nose pillow mock coverage rospkg --install-option="--prefix=${ROBOT_ROOT}/usr"
-
+pip install -U numpy
 # Add to bash profile
 cat >> ~/.bash_profile <<"EOF"
 export PYTHONPATH=${ROBOT_ROOT}/usr/lib/python2.7/site-packages:$PYTHONPATH
