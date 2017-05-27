@@ -15,7 +15,7 @@ Para eso, se recomienda seguir las instrucciones de [uchile_system](https://gith
 cdb base
 sudo apt-get install python-catkin-tools
 catkin build --summarize
-
+```
 
 E instalar lo que falta:
 ```bash
