@@ -433,6 +433,7 @@ sudo make install
 # ---------------------------------------------------------
 # notes:
 # - This is the latest version
+# - This takes hours :(
 # prerequisites:
 # - gcc >= 4.8
 cd ~/pepper_dep
