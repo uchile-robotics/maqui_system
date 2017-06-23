@@ -6,15 +6,12 @@
 # prerequisites:
 # - none
 cd ~/pepper_dep
-curl -O http://ftp.gnu.org/gnu/wget/wget-1.15.tar.gz
-tar -zxvf wget-1.15.tar.gz
+curl -O https://ftp.gnu.org/gnu/wget/wget-1.16.tar.gz
+tar -zxvf wget-1.16.tar.gz
 cd wget-1.15/
 ./configure
 make
 sudo make install
-
-
-
 
 # hdf5 1.8.12
 # ---------------------------------------------------------
@@ -26,7 +23,6 @@ sudo make install
 #       OpenSSL: error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version
 #       Unable to establish SSL connection.
 # prerequisites:
-# - hdf5
 # - wget 1.15
 cd ~/pepper_dep
 wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.12/src/hdf5-1.8.12.tar.gz -O hdf5-1.8.12.tar.gz
@@ -42,6 +38,7 @@ sudo make install
 # ---------------------------------------------------------
 # notes:
 # - compilation REQUIRES AT LEAST 1.6 GB in RAM or it won't work, i always use 4 GB just in case
+# - it might seem frozen from time to time, but it takes a while
 # prerequisites:
 # - hdf5
 cd ~/pepper_dep
@@ -72,6 +69,8 @@ cd pkgconf-pkgconf-0.9.12/
 make
 sudo make install
 
+# Set the PKG_CONFIG_PATH environment variable
+export PKG_CONFIG_PATH=/home/nao/ros/indigo/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/local/lib/pkgconfig
 
 # libxml2 2.9.4
 # ---------------------------------------------------------
@@ -86,7 +85,18 @@ cd libxml2-2.9.4/
 make
 sudo make install
 
-
+# libxml2 2.9.4
+# ---------------------------------------------------------
+# notes:
+# prerequisites:
+# - pkgconf
+cd ~/pepper_dep
+wget http://xmlsoft.org/sources/python/libxml2-python-2.5.11.tar.gz -O libxml2-python-2.5.11.tar.gz
+tar -xvzf libxml2-python-2.5.11.tar.gz
+cd libxml2-python-2.5.11/
+./autogen.sh
+make
+sudo make install
 
 # util-macros 1.7.0
 # ---------------------------------------------------------
@@ -235,7 +245,8 @@ sudo make install
 # notes:
 # - This is the latest version
 # prerequisites:
-# - None
+# - xorg macros
+# - xproto
 cd ~/pepper_dep
 wget https://www.x.org/archive//individual/lib/libXau-1.0.8.tar.gz -O libXau-1.0.8.tar.gz --no-check-certificate
 tar -xvzf libXau-1.0.8.tar.gz
@@ -288,7 +299,7 @@ cd inputproto-2.3/
 make
 sudo make install
 
-# xsmhfence 1.2
+# X11 1.
 # ---------------------------------------------------------
 # notes:
 # - This is the latest version
@@ -394,57 +405,6 @@ make
 sudo make install
 
 ######################### TODO OK HASTA ACA? #########################
-
-# gcc 4.8.5
-# ---------------------------------------------------------
-# notes:
-# - This is the latest of the supported versions for LLVM
-# - This takes a loooooooong time to compile (and a little time to download)
-# - IT IS NECESSARY TO RESTART FOR CHANGES TO TAKE PLACE
-# prerequisites:
-# - None
-cd ~/pepper_dep
-wget https://cmake.org/files/v3.8/cmake-3.8.2.tar.gz -O cmake-3.8.2.tar.gz --no-check-certificate
-tar -xvzf cmake-3.8.2.tar.gz
-cd cmake-3.8.2/
-./configure
-gmake
-make
-sudo make install
-
-# gcc 4.8.5
-# ---------------------------------------------------------
-# notes:
-# - This is the latest of the supported versions for LLVM
-# - This takes a loooooooong time to compile (and a little time to download)
-# - IT IS NECESSARY TO RESTART FOR CHANGES TO TAKE PLACE
-# prerequisites:
-# - None
-cd ~/pepper_dep
-wget ftp://ftp.gnu.org/gnu/gcc/gcc-4.8.5/gcc-4.8.5.tar.gz -O gcc-4.8.5.tar.gz --no-check-certificate
-tar -xvzf gcc-4.8.5.tar.gz
-cd gcc-4.8.5/
-./configure
-gmake
-make
-sudo make install
-
-# llvm 4.0.0
-# ---------------------------------------------------------
-# notes:
-# - This is the latest version
-# - This takes hours :(
-# prerequisites:
-# - gcc >= 4.8
-cd ~/pepper_dep
-svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm
-cd llvm/tools
-svn co http://llvm.org/svn/llvm-project/cfe/trunk clang
-cd ../..
-mkdir build-llvm
-cd build-llvm
-cmake -G -DCMAKE_C_COMPILER=$(which gcc) "Unix Makefiles" ../llvm
-make
 
 # mesa 10.1.3
 # ---------------------------------------------------------
