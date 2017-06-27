@@ -2,7 +2,7 @@
 # wget 1.15
 # ---------------------------------------------------------
 # notes:
-# - You NEED TO RESTART the machine for this changes to work
+# - You might need to restart the machine for this changes to work
 # prerequisites:
 # - none
 cd ~/pepper_dep
@@ -112,7 +112,6 @@ cd util-macros-1.7.0/
 ./configure
 sudo make install
 
-
 # glproto-1.4.17
 # ---------------------------------------------------------
 # notes:
@@ -127,6 +126,12 @@ cd glproto-1.4.17/
 make
 sudo make install
 
+# pciaccess 0.13.5
+# ---------------------------------------------------------
+# notes:
+# - This is the latest version
+# prerequisites:
+# - None
 cd ~/pepper_dep
 wget https://www.x.org/archive/individual/lib/libpciaccess-0.13.5.tar.gz -O libpciaccess-0.13.5.tar.gz --no-check-certificate
 tar -xvzf libpciaccess-0.13.5.tar.gz
@@ -135,15 +140,26 @@ cd libpciaccess-0.13.5
 make
 sudo make install
 
+# libdrm 7.0.31
+# ---------------------------------------------------------
+# notes:
+# - This is the SPECIFIC minimum version required, the latest versions throws errors on Mesa gmake process
+# prerequisites:
+# - None
 cd ~/pepper_dep
-wget https://dri.freedesktop.org/libdrm/libdrm-2.4.81.tar.gz -O libdrm-2.4.81.tar.gz --no-check-certificate
-tar -xvzf libdrm-2.4.81.tar.gz
-cd libdrm-2.4.81
+wget https://dri.freedesktop.org/libdrm/libdrm-2.4.52.tar.gz -O libdrm-2.4.52.tar.gz --no-check-certificate
+tar -xvzf libdrm-2.4.52.tar.gz
+cd libdrm-2.4.52
 ./configure
 make
 sudo make install
 
-
+# dri2proto 7.0.31
+# ---------------------------------------------------------
+# notes:
+# - This is the latest version
+# prerequisites:
+# - None
 cd ~/pepper_dep
 wget https://www.x.org/archive/individual/proto/dri2proto-2.8.tar.gz -O dri2proto-2.8.tar.gz --no-check-certificate
 tar -xvzf dri2proto-2.8.tar.gz
@@ -152,6 +168,12 @@ cd dri2proto-2.8/
 make
 sudo make install
 
+# dri3proto 1.0
+# ---------------------------------------------------------
+# notes:
+# - This is the latest version
+# prerequisites:
+# - None
 cd ~/pepper_dep
 wget https://www.x.org/archive/individual/proto/dri3proto-1.0.tar.gz -O dri3proto-1.0.tar.gz --no-check-certificate
 tar -xvzf dri3proto-1.0.tar.gz
@@ -160,6 +182,12 @@ cd dri3proto-1.0/
 make
 sudo make install
 
+# presentproto 1.1
+# ---------------------------------------------------------
+# notes:
+# - This is the latest version
+# prerequisites:
+# - None
 cd ~/pepper_dep
 wget https://www.x.org/archive/individual/proto/presentproto-1.1.tar.gz -O presentproto-1.1.tar.gz --no-check-certificate
 tar -xvzf presentproto-1.1.tar.gz
@@ -167,8 +195,6 @@ cd presentproto-1.1/
 ./configure
 make
 sudo make install
-
-################################# TODO OK HASTA ACA ##################################
 
 # xproto 7.0.31
 # ---------------------------------------------------------
@@ -360,7 +386,7 @@ cd fixesproto-5.0/
 make
 sudo make install
 
-# xsmhfence 1.2
+# xfixes 5.0
 # ---------------------------------------------------------
 # notes:
 # - This is the latest version
@@ -404,7 +430,17 @@ cd libxshmfence-1.2/
 make
 sudo make install
 
-######################### TODO OK HASTA ACA? #########################
+# libtool 2.4
+# ---------------------------------------------------------
+# notes:
+# - This is the required version to properly configure Mesa (needs to be confirmed)
+# prerequisites:
+# - None
+#cd ~/pepper_dep
+#wget http://gnu.c3sl.ufpr.br/ftp/libtool/libtool-2.4.tar.gz -O libtool-2.4.tar.gz
+#tar -xvzf libtool-2.4.tar.gz
+#cd libtool-2.4/
+#./configure
 
 # mesa 10.1.3
 # ---------------------------------------------------------
@@ -418,7 +454,8 @@ cd ~/pepper_dep
 wget https://mesa.freedesktop.org/archive/older-versions/10.x/10.1.3/MesaLib-10.1.3.tar.gz -O MesaLib-10.1.3.tar.gz --no-check-certificate
 tar -xvzf MesaLib-10.1.3.tar.gz
 cd Mesa-10.1.3/
-./configure
+autoreconf --force --install
+./configure --with-gallium-drivers=
 make
 sudo make install
 
