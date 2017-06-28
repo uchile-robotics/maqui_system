@@ -459,6 +459,16 @@ autoreconf --force --install
 make
 sudo make install
 
+# qhull
+# ---------------------------------------------------------
+cd ~/pepper_dep
+wget http://www.qhull.org/download/qhull-2015-src-7.2.0.tgz
+cd qhull-2015.2
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
 
 # pcl 1.7.2
 # ---------------------------------------------------------
@@ -480,3 +490,31 @@ mkdir -p pcl-pcl-1.7.2/build
 cd pcl-pcl-1.7.2/build
 cmake ..
 sudo make install
+
+# SDL
+# ---------------------------------------------------------
+# notes:
+# - This is the latest version
+# - Required for move_base ros install
+# prerequisites:
+# - None
+cd ~/pepper_dep
+hg clone -u SDL-1.2 https://hg.libsdl.org/SDL SDL-1.2
+cd SDL-1.2
+./autogen.sh
+./configure
+make
+sudo make install
+
+http://www.libsdl.org/projects/SDL_image/release/SDL_image-1.2.12.tar.gz
+cd ~/pepper_dep
+wget http://www.libsdl.org/projects/SDL_image/release/SDL_image-1.2.12.tar.gz -O SDL_image-1.2.12.tar.gz --no-check-certificate
+tar -xvzf SDL_image-1.2.12.tar.gz
+cd SDL_image-1.2.12/
+./configure
+make
+sudo make install
+
+
+
+### Ultimo error:
