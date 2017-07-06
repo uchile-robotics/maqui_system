@@ -525,7 +525,9 @@ cd SDL_image-1.2.12/
 make
 make install
 
-rm -f *.tar.gz *.tgz
+echo "export LIBRARY_PATH=$LD_LIBRARYPATH" >> .bash_profile
+
+rm -rf *.tar.gz *.tgz
 
 ### Ultimo error:
 ##### NO HAY!!!! =D
