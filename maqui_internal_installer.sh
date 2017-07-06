@@ -243,7 +243,7 @@ EOF
 source ~/.bash_profile
 mkdir -p /home/nao/ros/ros_catkin_ws/src
 cd ${ROS_INSTALL_PREFIX}/ros_catkin_ws
-rosinstall_generator ros_base robot_state_publisher --rosdistro indigo --deps --tar --exclude rviz > pepper_indigo.rosinstall
+rosinstall_generator ros_base robot_state_publisher navigation map_server --rosdistro indigo --deps --tar --exclude rviz RPP > pepper_indigo.rosinstall
 wstool init src pepper_indigo.rosinstall
 ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_INSTALL_PREFIX}/indigo -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
 # Update ROS paths
