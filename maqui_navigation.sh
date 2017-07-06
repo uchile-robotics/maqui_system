@@ -28,8 +28,8 @@ make install
 # prerequisites:
 # - wget 1.15
 cd ${ROBOT_ROOT}/src
-## NO ESTA!!!!  wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.12/src/hdf5-1.8.12.tar.gz -O hdf5-1.8.12.tar.gz
-tar -xvzf hdf5-1.8.12.tar.gz
+wget http://pkgs.fedoraproject.org/repo/pkgs/hdf5/hdf5-1.8.12.tar.bz2/03ad766d225f5e872eb3e5ce95524a08/hdf5-1.8.12.tar.bz2
+tar -xjvf hdf5-1.8.12.tar.gz
 mkdir -p hdf5-1.8.12/build
 cd hdf5-1.8.12/build
 cmake .. -DCMAKE_INSTALL_PREFIX=${ROBOT_ROOT}/usr
@@ -85,10 +85,9 @@ cd ${ROBOT_ROOT}/src
 wget https://github.com/GNOME/libxml2/archive/v2.9.4.tar.gz -O libxml2-v2.9.4.tar.gz
 tar -xvzf libxml2-v2.9.4.tar.gz
 cd libxml2-2.9.4/
-#./autogen.sh  --prefix=${ROBOT_ROOT}/usr
-python setup.py install --prefix=${ROBOT_ROOT}/usr
-#make
-#make install
+./autogen.sh  --prefix=${ROBOT_ROOT}/usr
+make
+make install
 
 # libxml2 2.9.4
 # ---------------------------------------------------------
@@ -474,7 +473,7 @@ make install
 # ---------------------------------------------------------
 cd ${ROBOT_ROOT}/src
 wget http://www.qhull.org/download/qhull-2015-src-7.2.0.tgz
-tar -xvzf MesaLib-10.1.3.tar.gz
+tar -xvzf qhull-2015-src-7.2.0.tgz
 cd qhull-2015.2
 mkdir build
 cd build
