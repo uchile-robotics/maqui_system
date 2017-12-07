@@ -5,18 +5,8 @@
     version: master
 
 - git:
-    local-name: pepper_virtual
-    uri: https://github.com/uchile-robotics-forks/pepper_virtual.git
-    version: develop
-
-- git:
     local-name: naoqi_bridge_msgs
     uri: https://github.com/uchile-robotics-forks/naoqi_bridge_msgs.git
-    version: master
-
-- git:
-    local-name: pepper_moveit_config
-    uri: https://github.com/uchile-robotics-forks/pepper_moveit_config.git
     version: master
 
 - git:
@@ -49,9 +39,8 @@
     local-name: maqui_core
     uri: https://github.com/uchile-robotics/maqui_core.git
     version: master
-
-- git:
-    local-name: maqui_sim
-    uri: https://github.com/uchile-robotics/maqui_sim.git
-    version: master
-
+- tar:
+    local-name: joint_state_publisher
+    uri: https://github.com/ros-gbp/robot_model-release/archive/release/indigo/kdl_parser/1.11.13-0.tar.gz
+    uri: https://github.com/uchile-robotics-forks/robot_model/archive/1.11.13_nogui.tar.gz
+    version: robot_model-release-release-indigo-kdl_parser-1.11.13-0

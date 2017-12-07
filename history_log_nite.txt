@@ -1,0 +1,500 @@
+   22  cd ..
+   23  ls
+   24  cd lib/
+   25  ls
+   26  cd ..
+   27  ls
+   28  cd ..
+   29  ls
+   30  cd ..
+   31  ls
+   32  cd ro
+   33  cd ros
+   34  ls
+   35  cd ros_catkin_ws/
+   36  ls
+   37  wstool init src pepper_indigo.rosinstall
+   38  nano pepper_indigo.rosinstall 
+   39  rm -rf pepper_indigo.rosinstall 
+   40  ls
+   41  wget https://raw.githubusercontent.com/uchile-robotics/maqui_system/feat-sm/pepper_indigo.rosinstall
+   42  wstool init src pepper_indigo.rosinstall 
+   43  ls
+   44  cd src/
+   45  ls
+   46  cd ..
+   47  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_INSTALL_PREFIX}/indigo -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
+   48  ls
+   49  ll
+   50  cd ..
+   51  ls
+   52  ll
+   53  cd indigo/
+   54  ll
+   55  cd include/
+   56  ll
+   57  cd ..
+   58  cd lib/
+   59  ll
+   60  cd ..
+   61  ls
+   62  cd ..
+   63  ls
+   64  cd ros_catkin_ws/
+   65  ROS_INSTALL_PREFIX=~/ros
+   66  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_INSTALL_PREFIX}/indigo -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
+   67  ls
+   68  cd ..
+   69  ls
+   70  cd ..
+   71  ls
+   72  nano .bash_
+   73  nano .bash_profile
+   74  source .bash_profile 
+   75  nano .bash_profile 
+   76  source .bash_profile 
+   77  cd ros/
+   78  ls
+   79  cd ros_catkin_ws/
+   80  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_INSTALL_PREFIX}/indigo -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
+   81  ls
+   82  cd ..
+   83  ls
+   84  cd indigo/
+   85  ls
+   86  cd ..
+   87  ls
+   88  cd ..
+   89  ls
+   90  cd maqui_root/
+   91  ls
+   92  cd usr/
+   93  ls
+   94  cd ..
+   95  ls
+   96  cd src/
+   97  ls
+   98  cd yaml-cpp-yaml-cpp-0.5.3/
+   99  ls
+  100  cd ..
+  101  ls
+  102  cd ..
+  103  ls
+  104  echo $PYTHONPATH
+  105  LS
+  106  CD ..
+  107  cd ..
+  108  ls
+  109  cd ros/
+  110  ls
+  111  rm -r -f indigo/
+  112  ls
+  113  cd ..
+  114  ls
+  115  nano .bash_profile 
+  116  ls
+  117  cd maqui_root/
+  118  ls
+  119  cd src/
+  120  ls
+  121  cd yaml-cpp-yaml-cpp-0.5.3/
+  122  ls
+  123  # yaml cpp
+  124  cd ${ROBOT_ROOT}/src
+  125  wget https://github.com/uchile-robotics-forks/yaml-cpp/archive/yaml-cpp-0.5.3.tar.gz
+  126  tar -xvzf yaml-cpp-0.5.3.tar.gz
+  127  mkdir -p yaml-cpp-yaml-cpp-0.5.3/build
+  128  cd yaml-cpp-yaml-cpp-0.5.3/build
+  129  cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=${ROBOT_ROOT}/usr 
+  130  make
+  131  make install
+  132  _check_errno $? "yaml cpp"
+  133  ls
+  134  cd
+  135  ls
+  136  cd maqui_root/
+  137  ls
+  138  cd usr/
+  139  ls
+  140  cd ..
+  141  ls
+  142  cd ..
+  143  ls
+  144  cd ros/
+  145  ls
+  146  cd ros_catkin_ws/
+  147  ls
+  148  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROBOT_ROOT}/usr -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
+  149  cd /home/nao/ros/ros_catkin_ws/build_isolated/rospack && /home/nao/maqui_root/usr/env.sh make -j1 -l1
+  150  /home/nao/maqui_root/usr/env.sh LDFLAGS='-ldl' make -j1 -l1
+  151  /home/nao/maqui_root/usr/env.sh LDFLAGS="-ldl" make -j1 -l1
+  152  /home/nao/maqui_root/usr/env.sh  make 
+  153  /home/nao/maqui_root/usr/env.sh  make -j1 -l1 -ldl
+  154  /home/nao/maqui_root/usr/env.sh  make -j1 -l1 -Wl,--no-as-needed -ldl
+  155  /home/nao/maqui_root/usr/env.sh  make  -Wl,--n
+  156  /home/nao/maqui_root/usr/env.sh  make -j1 -l1 LDFLAGS="-Wl,--no-as-needed"
+  157  ls
+  158  nano Makefile 
+  159  /home/nao/maqui_root/usr/env.sh  make  -Wl,--no-as-needed -ldl
+  160  /home/nao/maqui_root/usr/env.sh  make  -Wl,--no-as-needed -ldl -j1 -l1
+  161  make
+  162  ls
+  163  make --help
+  164  ls
+  165  nano Makefile
+  166  ls
+  167  cd maqui_root/
+  168  ls
+  169  cd usr/
+  170  ls
+  171  cd ..
+  172  ls
+  173  cd ros
+  174  ls
+  175  cd ros_catkin_ws/
+  176  ls
+  177  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROBOT_ROOT}/usr -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
+  178  cd /home/nao/ros/ros_catkin_ws/build_isolated/rospack && /home/nao/maqui_root/usr/env.sh make -j1 -l1
+  179  vim  /home/nao/maqui_root/usr/env.sh 
+  180   /home/nao/maqui_root/usr/env.sh make -j1 -l1
+  181   /home/nao/maqui_root/usr/env.sh LDFLAGS='-ldl' make -j1 -l1
+  182  LDFLAGS='-ldl' make -j1 -l1
+  183  history 
+  184   make -j1 -l1 -ldl
+  185   make -j1 -l1 -ldl -fno-strict-aliasing
+  186   make -j1 -l1 -ldl 
+  187  clear
+  188   make -j1 -l1 -ldl 
+  189  locate openpty
+  190  find openpty
+  191   /home/nao/maqui_root/usr/env.sh make -j1 -l1
+  192   /home/nao/maqui_root/usr/env.sh make -j1 -l1
+  193   /home/nao/maqui_root/usr/env.sh make -ldl -j1 -l1
+  194   /home/nao/maqui_root/usr/env.sh -ldl make  -j1 -l1
+  195   /home/nao/maqui_root/usr/env.sh make -ldl -j1 -l1
+  196   /home/nao/maqui_root/usr/env.sh make -Wl --no-as-needed -ldl -j1 -l1
+  197   /home/nao/maqui_root/usr/env.sh make -Wl  -ldl -j1 -l1
+  198   /home/nao/maqui_root/usr/env.sh make -Wl,--no-as-needed -ldl -j1 -l1
+  199   /home/nao/maqui_root/usr/env.sh make -j1 -l1 -Wl,--no-as-needed -ldl 
+  200   /home/nao/maqui_root/usr/env.sh make -Wl,--no-as-needed -ldl 
+  201   make -j1 -l1 -Wl,--no-as-needed -ldl 
+  202   make -j1 -l1 -Wl,--no-as-needed -ldl  -j1 -l1
+  203   make -j1 -l1  -lsqlapi -lstdc++ -Wl,--no-as-needed -ldl  
+  204   make -j1 -l1  -lsqlapi -lstdc++ -W1,--no-as-needed -ldl  
+  205   make -j1 -l1  -lsqlapi -lstdc++ -W1,--no-as-needed -ldl  -lutil
+  206   make -j1 -l1  -lsqlapi -lstdc++ -W1,--no-as-needed -ldl  
+  207   make  -W1,--no-as-needed -ldl  
+  208   make
+  209   make  -W1,--no-as-needed 
+  210   make -ldl  -W1,--no-as-needed 
+  211  vim  /home/nao/maqui_root/usr/env.sh 
+  212   make  -W1,--no-as-needed -ldl  -lutil
+  213   make  -W1,--no-as-needed -lnsl -ldl -lreadline -ltermcap -lpthread -lutil -lm 
+  214   make  -W1,--no-as-needed -lnsl -ldl -lreadline -ltermcap -lpthread -lutil -lm   -ldl  -lieee -lm -Wl,--export-dynamic
+  215   make  -W1,--no-as-needed -ldl  -lutil -lm     
+  216  cd ../..
+  217  ls
+  218  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROBOT_ROOT}/usr -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF -ldl
+  219  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROBOT_ROOT}/usr -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF 
+  220  cd /home/nao/ros/ros_catkin_ws/build_isolated/rospack
+  221   /home/nao/maqui_root/usr/env.sh make -j1 -l1 -W1,--no-as-needed -ldl  -lutil 
+  222   /home/nao/maqui_root/usr/env.sh make  -W1,--no-as-needed -ldl  -lutil 
+  223   /home/nao/maqui_root/usr/env.sh make  CXXFLAGS='-W1,--no-as-needed -ldl  -lutil'
+  224   /home/nao/maqui_root/usr/env.sh make  CXXFLAGS='-W1,--no-as-needed' LIBS=' -ldl  -lutil'
+  225   /home/nao/maqui_root/usr/env.sh make   LIBS='-W1,--no-as-needed -ldl  -lutil'
+  226   /home/nao/maqui_root/usr/env.sh make   CXXFLAGS='-W1,--no-as-needed -ldl  -lutil'
+  227   /home/nao/maqui_root/usr/env.sh make   CFLAGS='-W1,--no-as-needed -ldl  -lutil'
+  228   /home/nao/maqui_root/usr/env.sh make   LDFLAGS="-Wl,--no-as-needed -ldl  -lutil" 
+  229   /home/nao/maqui_root/usr/env.sh   LDFLAGS="-Wl,--no-as-needed -ldl  -lutil" make
+  230   /home/nao/maqui_root/usr/env.sh   LDFLAGS="-Wl,--no-as-needed " make
+  231   /home/nao/maqui_root/usr/env.sh   LIBS="-Wl,--no-as-needed " make
+  232   /home/nao/maqui_root/usr/env.sh   LIBS="-ldl " make
+  233   /home/nao/maqui_root/usr/env.sh   LDLIBS="-ldl " make
+  234  vim Makefile 
+  235  echo $LDLIBS
+  236  echo $LDFLAGS
+  237  echo $LD_LIBRARY_PATH
+  238  export CPATH=/usr/local/include
+  239  export LIBRARY_PATH=/usr/local/lib
+  240   /home/nao/maqui_root/usr/env.sh   LDLIBS="-ldl " make
+  241   /home/nao/maqui_root/usr/env.sh   LDFLAGS="-Wl,--no-as-needed " make
+  242  export LDFLAGS="-ldl -lm -lpcap -lsqlite3 $LDFLAGS"
+  243   /home/nao/maqui_root/usr/env.sh   LDFLAGS="-Wl,--no-as-needed " make
+  244   /home/nao/maqui_root/usr/env.sh    make
+  245  vim Makefile 
+  246  ls
+  247  vim CMakeCache.txt 
+  248  vim Makefile 
+  249  ls
+  250  vim Makefile 
+  251  ls
+  252  cd ..
+  253  ls
+  254  cd ..
+  255  ls
+  256  cd src/
+  257  ls
+  258  cd ros_pack
+  259  ls
+  260  cd rospack/
+  261  lks
+  262  ls
+  263  nano CMakeLists.txt 
+  264  cd ..
+  265  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROBOT_ROOT}/usr -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF 
+  266  ls
+  267  cd src/
+  268  ls
+  269  cd rospack
+  270  ls
+  271  nao CMakeLists.txt 
+  272  nano CMakeLists.txt 
+  273  ls
+  274  cd ros/
+  275  ls
+  276  cd ros_catkin_ws/
+  277  ls
+  278  cd src/rospack/
+  279  ls
+  280  vim CMakeLists.txt
+  281  cd ../..
+  282  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROBOT_ROOT}/usr -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF 
+  283  vim src/rospack/CMakeLists.txt
+  284  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROBOT_ROOT}/usr -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF 
+  285  ls
+  286  cd
+  287  ls
+  288  cd maqui_root/
+  289  ls
+  290  cd usr/
+  291  ls
+  292  cd b
+  293  cd bin
+  294  ls
+  295  ./pip install numpy 
+  296  ls
+  297  cd -
+  298  cd ..
+  299  ls
+  300  cd usr/
+  301  ls
+  302  cd lib/
+  303  ls
+  304  cd python2.7/
+  305  ls
+  306  cd site-packages/
+  307  ls
+  308  cd ..
+  309  cd
+  310  ls
+  311  cd ro
+  312  cd ros
+  313  ls
+  314  cd ros_catkin_ws/
+  315  ls
+  316  ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROBOT_ROOT}/usr -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF 
+  317  ls
+  318  cd ..
+  319  ls
+  320  cd ..
+  321  ls
+  322  exit
+  323  ls
+  324  mkdir maqui_ws
+  325  ls
+  326  cd maqui_
+  327  cd maqui_ws/
+  328  wstool init src https://raw.githubusercontent.com/uchile-robotics/maqui_system/master/maqui_external.rosinstall
+  329  ls
+  330  cd src/
+  331  ls
+  332  wget https://github.com/uchile-robotics-forks/robot_model/archive/1.11.13_nogui.tar.gz
+  333  ls
+  334  tar -xvzf 1.11.13_nogui.tar.gz 
+  335  ls
+  336  cd robot_model-1.11.13_nogui/
+  337  ls
+  338  mv joint_state_publisher/ ../
+  339  ls
+  340  cd ..
+  341  ls
+  342  rm -rf robot_model-1.11.13_nogui/
+  343  rm -rf 1.11.13_nogui.tar.gz 
+  344  ls
+  345  cd joint_state_publisher/
+  346  ls
+  347  nano package.xml 
+  348  cd .
+  349  cd ..
+  350  ls
+  351  cd maqui_sim/
+  352  ls
+  353  cd ..
+  354  rm -rf maqui_sim/
+  355  ls
+  356  rm -rf pepper_moveit_config/
+  357  ls
+  358  cd pepper_
+  359  cd pepper_virtual/
+  360  ls
+  361  rm -rf pepper_gazebo_plugin/
+  362  ls
+  363  cd ..
+  364  ls
+  365  cd pepper_robot/
+  366  ls
+  367  cd ..
+  368  ls
+  369  cd ..
+  370  ls
+  371  ./../ros/ros_catkin_ws/src/catkin/bin/catkin_make_isolated -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
+  372  ./../ros/ros_catkin_ws/src/catkin/bin/catkin_make -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
+  373  ls
+  374  cd src/
+  375  ls
+  376  wget https://github.com/uchile-robotics-forks/libqicore-release/archive/release/indigo/naoqi_libqicore/2.3.1-3.gz.tar
+  377  wget https://github.com/uchile-robotics-forks/libqicore-release/archive/release/indigo/naoqi_libqicore/2.3.1-3.tar.gz
+  378  ls
+  379  tar -xvzf 2.3.1-3.tar.gz 
+  380  ls
+  381  cd libqicore-release-release-indigo-naoqi_libqicore-2.3.1-3/
+  382  ls
+  383  cd ..
+  384  mv libqicore-release-release-indigo-naoqi_libqicore-2.3.1-3/ naoqi_libqicore
+  385  ls
+  386  wget https://github.com/uchile-robotics-forks/libqi-release/archive/release/indigo/naoqi_libqi/2.3.0-2.tar.gz
+  387  ls
+  388  tar -xvzf 2.3.0-2.tar.gz 
+  389  ls
+  390  mv libqi-release-release-indigo-naoqi_libqi-2.3.0-2/ naoqi_libqi
+  391  ls
+  392  cd naoqi_libqicore/
+  393  ls
+  394  nano CMakeLists.txt 
+  395  ls
+  396  cd ..
+  397  ls
+  398  cd ..
+  399  lÃ±s
+  400  ls
+  401  ./../ros/ros_catkin_ws/src/catkin/bin/catkin_make -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_ARG_EXTRA="" -DSETUPTOOLS_DEB_LAYOUT=OFF
+  402  ls
+  403  cd ..
+  404  ls
+  405  nano .bash_profile 
+  406  source .bash_profile 
+  407  ls
+  408  cd maqui_ws/
+  409  ls
+  410  cd devel
+  411  l
+  412  ls
+  413  cd ..
+  414  ls
+  415  cd ..
+  416  cd maqui_ws/
+  417  ls
+  418  rm -r -f build_isolated/ devel_isolated/
+  419  ls
+  420  cd ..
+  421  ls
+  422  nano .bash_profile
+  423  source .bash_profile 
+  424  ls
+  425  roslaunch pepper_bringup pepper_full.launch nao_ip:=192.168.1.102 roscore_ip:=192.168.1.104 
+  426  Ãls
+  427  cd ..
+  428  ls
+  429  cd nao/
+  430  ls
+  431  tar -zcvf maqui_ws.tar.gz maqui_ws/
+  432  ls
+  433  exit
+  434  ls
+  435  ls -a
+  436  exit
+  437  ls
+  438  cd
+  439  cd /
+  440  ls
+  441  cd lib/
+  442  ls
+  443  cd
+  444  ls
+  445  cd /
+  446  cd usr/
+  447  ls
+  448  cd lib
+  449  ls
+  450  cd
+  451  cd maqui_root
+  452  ls
+  453  cd src/
+  454  wget http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.gz
+  455  Ãls
+  456  ls
+  457  tar -xvzf boost_1_55_0.tar.gz 
+  458  ls
+  459  cd boost_1_55_0
+  460  ls
+  461  exit
+  462  ls
+  463  cd maqui_root
+  464  ls
+  465  cd src/
+  466  ls
+  467  cd boost_1_55_0
+  468  ls
+  469  ./bootstrap.sh --prefix=/home/nao/maqui_root/usr --with-libraries=all 
+  470  ./b2 install
+  471  ls
+  472  cd ..
+  473  ls
+  474  cd ..
+  475  ls
+  476  cd usr/
+  477  ls
+  478  cd lib/
+  479  ls
+  480  cd ..
+  481  ls
+  482  cd ..
+  483  ls
+  484  rm -rf maqui_root.tar.gz 
+  485  ls
+  486  tar -zcvf maqui_root.tar.gz maqui_root
+  487  ls
+  488  cd maqui_root/usr/
+  489  ls
+  490  echo $LD_LIBRARY_PATH
+  491  cd
+  492  vim .bash_profile 
+  493  roslaunch joint_trajectory_controller 
+  494  ls
+  495  cd maqui_ws
+  496  ls
+  497  cd src/
+  498  ls
+  499  cd ../..
+  500  ls
+  501  cd pepper_dep/
+  502  ls
+  503  cd ...
+  504  ls
+  505  cd ..
+  506  ls
+  507  cd ros
+  508  ls
+  509  cd ..
+  510  roscd maqui_core
+  511  ls
+  512  cd ..
+  513  ls
+  514  cd ..
+  515  ls
+  516  cd ..
+  517  s
+  518  ls
+  519  history
+  520  ls
+  521  history > history_log_nite.txt
