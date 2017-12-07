@@ -1,27 +1,21 @@
 # Maqui system
 
-Este repositorio contiene los scripts para instalar los packages de ROS para trabajar con el robot Maqui (Pepper, Softbank Robotics) y para su simulación.
+Este repositorio contiene scripts para instalar ROS y dependencias en el robot Maqui (Pepper, Softbank Robotics). Además, permite configurar la simulación del robot mediante una máquina virtual.
 
 
-## Instalación de paquetes para Maqui
+## Instalación fuera del robot
 
-Se utiliza el script `maqui_external_installer.sh`. 
+Para eso, se recomienda seguir las instrucciones de [uchile_system](https://github.com/uchile-robotics/uchile_system).
+
+
+### Instalación de otras dependencias... (verificar)
 
 ```bash
-# descargar y ejecutar maqui_external_installer.sh
-wget -q -O - https://raw.githubusercontent.com/uchile-robotics/maqui_system/master/maqui_external_installer.sh | bash
-
 # build
-cd maqui_ws
+cdb base
 sudo apt-get install python-catkin-tools
 catkin build --summarize
-```
 
-Luego, se debe modificar el archivo de inicio de la consola de interés (bash o zsh):
-```bash
-echo "source ~/maqui_ws/devel/setup.bash" >> ~/.bashrc
-echo "source ~/maqui_ws/devel/setup.zsh" >> ~/.zshrc
-```
 
 E instalar lo que falta:
 ```bash
