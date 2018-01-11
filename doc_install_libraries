@@ -1,0 +1,18 @@
+
+##### TERMCOLOR #####
+
+cd maqui_root/src
+wget https://github.com/hfeeki/termcolor/archive/master.tar.gz -O termcolor.tar.gz
+tar -xvzf termcolor.tar.gz
+cd termcolor-master/
+python setup.py build
+python setup.py install
+
+##### AIML #####
+
+cd maqui_root/src
+wget https://github.com/cdwfs/pyaiml/archive/master.tar.gz -O pyaiml.tar.gz
+tar -xvzf pyaiml.tar.gz
+cd pyaiml-master/
+python setup.py build
+python setup.py install
