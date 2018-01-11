@@ -1,11 +1,39 @@
-install opencv in pepper:
+############  PEPPER OPENCV INSTALLATION ############
 
-cd "$HOME"
-git clone https://github.com/opencv/opencv.git
+##### DEPENDENCIES INSTALLATION #####
 
-cd ~/opencv
+cd maqui_root/src
+download libjpeg8_8d.orig.tar.gz from http://http.debian.net/debian/pool/main/libj/libjpeg8/libjpeg8_8d.orig.tar.gz  or  https://packages.debian.org/wheezy/libjpeg8
+tar -xvzf libjpeg8_8d.orig.tar.gz
+cd jpeg-8d/
+./configure --prefix=${ROBOT_ROOT}/usr
+make
+make install
+
+cd maqui_root/src/
+download tiff-3.9.7.tar.gz from http://download.osgeo.org/libtiff/tiff-3.9.7.tar.gz  or  http://download.osgeo.org/libtiff/
+cd tiff-3.9.7/
+./configure --prefix=${ROBOT_ROOT}/usr
+make
+make install
+
+cd maqui_root/src/
+download ffmpeg_0.6.1.orig.tar.gz from ffmpeg_0.6.1.orig.tar.gz  or  https://launchpad.net/ubuntu/+source/ffmpeg/4:0.6.1-2ubuntu1
+cd ffmpeg-0.6.1/
+./configure --prefix=${ROBOT_ROOT}/usr --enable-shared
+make
+make install
+
+
+
+##### OPENCV-2.3.1 INSTALLATION #####
+
+cd maqui_root/src/
+wget https://github.com/opencv/opencv/archive/2.3.1.tar.gz -O opencv-2.3.1.tar.gz
+tar -xvzf opencv-2.3.1.tar.gz
+cd opencv-2.3.1
 mkdir build
 cd build
-cmake -D CMAKE_BUILD_TYPE=DEBUG -D CMAKE_INSTALL_PREFIX=/usr/local ..
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/nao/maqui_root/usr ..
 make
-sudo make install
+make install
