@@ -1,18 +1,75 @@
 
 ##### TERMCOLOR #####
 
-cd maqui_root/src
+cd ${ROBOT_ROOT}/src
 wget https://github.com/hfeeki/termcolor/archive/master.tar.gz -O termcolor.tar.gz
 tar -xvzf termcolor.tar.gz
 cd termcolor-master/
 python setup.py build
 python setup.py install
 
+
 ##### AIML #####
 
-cd maqui_root/src
+cd ${ROBOT_ROOT}/src
 wget https://github.com/cdwfs/pyaiml/archive/master.tar.gz -O pyaiml.tar.gz
 tar -xvzf pyaiml.tar.gz
 cd pyaiml-master/
+python setup.py build
+python setup.py install
+
+
+##### rosbridge server suite #####
+
+cd ${HOME}
+mkdir maqui_web_ws
+cd maqui_web_ws
+mkdir src
+cd src
+wget https://github.com/RobotWebTools/rosbridge_suite/archive/master.tar.gz -O rosbridge_suite.tar.gz
+tar -xvzf rosbridge_suite.tar.gz
+cd ..
+catkin_make
+
+
+##### rosauth #####
+
+cd ${HOME}
+mkdir rosauth_ws
+cd rosauth_ws
+mkdir src
+cd src
+wget https://github.com/GT-RAIL/rosauth/archive/master.tar.gz -O rosauth.tar.gz
+tar -xvzf rosauth.tar.gz
+cd ..
+catkin_make
+
+
+##### Pymongo #####
+
+cd ${ROBOT_ROOT}/src
+wget https://github.com/mongodb/mongo-python-driver/archive/master.tar.gz -O mongo-python-driver.tar.gz
+tar -xvzf mongo-python-driver.tar.gz
+cd mongo-python-driver-master
+python setup.py build
+python setup.py install
+
+
+##### zope interface3.6.1 #####
+
+cd ${ROBOT_ROOT}/src
+wget http://pkgs.fedoraproject.org/repo/pkgs/python-zope-interface/zope.interface-3.6.1.tar.gz/7a895181b8d10be4a7e9a3afa13cd3be/zope.interface-3.6.1.tar.gz
+tar -xvzf zope.interface-3.6.1.tar.gz
+cd zope.interface-3.6.1
+python setup.py build
+python setup.py install
+
+
+##### psutil5.4.3 #####
+
+cd ${ROBOT_ROOT}/src
+wget https://pypi.python.org/packages/e2/e1/600326635f97fee89bf8426fef14c5c29f4849c79f68fd79f433d8c1bd96/psutil-5.4.3.tar.gz#md5=3b291833dbea631db9d271aa602a169a
+tar -xvzf psutil-5.4.3.tar.gz
+cd psutil-5.4.3
 python setup.py build
 python setup.py install
