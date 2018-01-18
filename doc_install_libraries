@@ -73,3 +73,13 @@ tar -xvzf psutil-5.4.3.tar.gz
 cd psutil-5.4.3
 python setup.py build
 python setup.py install
+
+
+##### Twisted-13.1.0 #####
+
+cd ${ROBOT_ROOT}/src
+wget http://twistedmatrix.com/Releases/Twisted/13.1/Twisted-13.1.0.tar.bz2
+tar -xjf Twisted-13.1.0.tar.bz2
+cd Twisted-13.1.0
+python setup.py build
+python setup.py install
