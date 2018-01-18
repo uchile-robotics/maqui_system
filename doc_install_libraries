@@ -19,7 +19,7 @@ python setup.py build
 python setup.py install
 
 
-##### rosbridge server suite #####
+##### rosbridge server suite and rosauth #####
 
 cd ${HOME}
 mkdir maqui_web_ws
@@ -28,17 +28,6 @@ mkdir src
 cd src
 wget https://github.com/RobotWebTools/rosbridge_suite/archive/master.tar.gz -O rosbridge_suite.tar.gz
 tar -xvzf rosbridge_suite.tar.gz
-cd ..
-catkin_make
-
-
-##### rosauth #####
-
-cd ${HOME}
-mkdir rosauth_ws
-cd rosauth_ws
-mkdir src
-cd src
 wget https://github.com/GT-RAIL/rosauth/archive/master.tar.gz -O rosauth.tar.gz
 tar -xvzf rosauth.tar.gz
 cd ..
@@ -83,3 +72,4 @@ tar -xjf Twisted-13.1.0.tar.bz2
 cd Twisted-13.1.0
 python setup.py build
 python setup.py install
+
