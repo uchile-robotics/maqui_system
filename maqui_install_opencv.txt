@@ -19,13 +19,16 @@ cd tiff-3.9.7/
 make
 make install
 
-cd ${ROBOT_ROOT}/src
-wget https://launchpad.net/ubuntu/+archive/primary/+files/ffmpeg_0.6.1.orig.tar.gz
-tar -xvzf ffmpeg_0.6.1.orig.tar.gz
-cd ffmpeg-0.6.1/
-./configure --prefix=${ROBOT_ROOT}/usr --enable-shared
-make
-make install
+
+#La libreria ffmpeg no se instala
+
+#cd ${ROBOT_ROOT}/src
+#wget https://launchpad.net/ubuntu/+archive/primary/+files/ffmpeg_0.6.1.orig.tar.gz
+#tar -xvzf ffmpeg_0.6.1.orig.tar.gz
+#cd ffmpeg-0.6.1/
+#./configure --prefix=${ROBOT_ROOT}/usr --enable-shared
+#make
+#make install
 
 #### al instalar la libreria ffmpeg se obtiene el siguiente error al complilar maqui_ws: 
 # /usr/lib/gcc/i686-pc-linux-gnu/4.5.3/../../../../lib/libopencv_highgui.so: undefined reference to `avformat_write_header@LIBAVFORMAT_52'
@@ -33,14 +36,17 @@ make install
 # /usr/lib/gcc/i686-pc-linux-gnu/4.5.3/../../../../lib/libopencv_highgui.so: undefined reference to `avformat_open_input@LIBAVFORMAT_52'
 
 
-##### OPENCV-2.3.1 INSTALLATION #####
+
+
+##### OPENCV-2.4.8 INSTALLATION #####
 
 cd maqui_root/src/
-wget https://github.com/opencv/opencv/archive/2.3.1.tar.gz -O opencv-2.3.1.tar.gz
-tar -xvzf opencv-2.3.1.tar.gz
-cd opencv-2.3.1
+wget https://github.com/opencv/opencv/archive/2.4.8.tar.gz -O opencv-2.4.8.tar.gz
+tar -xvzf opencv-2.4.8.tar.gz
+cd opencv-2.4.8
 mkdir build
 cd build
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/nao/maqui_root/usr ..
+#con el siguiente comando se eliminan librerias de opencv que requieren ffmpeg y/o usan interfaz grafica
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/nao/maqui_root/usr -DBUILD_opencv_highgui=OFF -DBUILD_opencv_superres=OFF ..
 make
 make install
