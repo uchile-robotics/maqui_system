@@ -1,22 +1,26 @@
 ######################## Dependencies ########################
+cd maqui_root/src/
 wget https://github.com/cython/backports_abc/archive/master.tar.gz -O backports_abc.tar.gz
 tar -xvzf backports_abc.tar.gz
 cd backports_abc-master/
 python setup.py build
 python setup.py install
 
+cd maqui_root/src/
 wget https://github.com/certifi/python-certifi/archive/master.tar.gz -O python-certifi.tar.gz
 tar -xvzf python-certifi.tar.gz
 cd python-certifi-master/
 python setup.py build
 python setup.py install
 
+cd maqui_root/src/
 wget https://github.com/ambv/singledispatch/archive/master.tar.gz -O singledispatch.tar.gz
 tar -xvzf singledispatch.tar.gz
 cd singledispatch-master/
 python setup.py build
 python setup.py install
 
+cd maqui_root/src/
 wget https://github.com/sbadia/python-backports.ssl-match-hostname/archive/master.tar.gz -O python-backports.ssl-match-hostname.tar.gz
 tar -xvzf python-backports.ssl-match-hostname.tar.gz
 cd python-backports.ssl-match-hostname-master/
@@ -28,9 +32,10 @@ python setup.py install
 
 ########################### Tornado ##########################
 
+cd maqui_root/src/
 wget https://github.com/tornadoweb/tornado/archive/v4.5.3.tar.gz -O tornado.tar.gz
 tar -xvzf tornado.tar.gz
-cd tornado-master/
+cd tornado-4.5.3/
 python setup.py build
 python setup.py install
 
