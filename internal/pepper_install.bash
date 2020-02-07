@@ -14,53 +14,59 @@ ROS=${UCH_WS}/ros
 mkdir -p $ROS
 mkdir -p $PKGS
 
+# echo -e $sline "\n Downloading Packages .... \n" $iline
+cd $ROS 
+mkdir -p forks_ws/src base_ws/src soft_ws/src high_ws/src
 
-echo -e $sline "\n Downloading Packages .... \n" $iline
-
-cd $PKGS
 
 ##################
 #     FORKS      #
 ##################
 
+echo -e $sline "\n Downloading Forks Packages ... \n" $iline
+
+mkdir $PKGS/forks
+cd $PKGS/forks
+
 mkdir srrg_depth2laser_ros; cd srrg_depth2laser_ros
 
-wget https://gitlab.com/srrg-software/srrg_depth2laser/-/archive/master/srrg_depth2laser-master.tar.gz && \
-		tar -xvf srrg_depth2laser-master.tar.gz && \
+if [ ! -f srrg_depth2laser-master.tar.gz ]; then
+
+	wget https://gitlab.com/srrg-software/srrg_depth2laser/-/archive/master/srrg_depth2laser-master.tar.gz && \
+		tar -xvf srrg_depth2laser-master.tar.gz &&\
 		mv srrg_depth2laser-master srrg_depth2laser &&\
 		rm srrg_depth2laser-master.tar.gz
 
-
-wget https://gitlab.com/srrg-software/srrg_depth2laser_ros/-/archive/master/srrg_depth2laser_ros-master.tar.gz &&\
+fi
+ 
+if [ ! -f srrg_depth2laser_ros-master.tar.gz ]; then
+	wget https://gitlab.com/srrg-software/srrg_depth2laser_ros/-/archive/master/srrg_depth2laser_ros-master.tar.gz &&\
 		tar -xvf srrg_depth2laser_ros-master.tar.gz && \
 		mv srrg_depth2laser_ros-master srrg_depth2laser_ros &&\
 		rm srrg_depth2laser_ros-master.tar.gz
+fi
 
 sed -i -e '34,+3 s/^/#/' -e '19 s/^/#/' -e '138 s/^/#/' srrg_depth2laser/CMakeLists.txt # comment lines in MakeFile :s
 
+cd $PKGS/forks
 
-cd $PKGS
+git clone -b kinetic https://github.com/ros-perception/vision_opencv.git  # problems with the cv_brdige version in gentoo_prefix
+mv vision_opencv/cv_bridge . && rm -rf vision_opencv
+sed -i '/if(NOT ANDROID)*/i set(Boost_INCLUDE_DIR "/tmp/gentoo/usr/include")' cv_bridge/CMakeLists.txt
+
 
 # is really necessary??????
 git clone https://github.com/ros-visualization/interactive_markers.git
 
 
 ##################
-#     BASE       #
+#     Pepper     #
 ##################
 
-# uchile_common
-git clone -b feat-pepper-kinetic https://github.com/uchile-robotics/uchile_common.git
-# sed -i '/find_package(Boost*/i set(Boost_INCLUDE_DIR "/tmp/gentoo/usr/include")' $UCHSRC/uchile_common/uchile_tf/CMakeLists.txt
-
-# uchile_knowledge
-git clone -b feat-pepper-kinetic https://github.com/uchile-robotics/uchile_knowledge.git
+echo -e $sline "\n Downloading Pepper Packages ... \n" $iline
 
 
-##################
-#     MAQUI      #
-##################
-
+cd $PKGS/forks
 mkdir pepper ; cd pepper
 
 #git clone https://github.com/ros-naoqi/naoqi_bridge.git
@@ -79,14 +85,20 @@ git clone -b feat-pepper-kinetic https://github.com/uchile-robotics-forks/naoqi_
 # https://github.com/ros-naoqi/naoqi_driver.git 
 
 # naoqi_libqi
-wget https://github.com/ros-naoqi/libqi-release/archive/release/kinetic/naoqi_libqi/2.5.0-3.tar.gz &&\
+
+if [ ! -f  2.5.0-3.tar.gz ] && [ ! -d naoqi_libqi ]; then
+	wget https://github.com/ros-naoqi/libqi-release/archive/release/kinetic/naoqi_libqi/2.5.0-3.tar.gz
+fi
+
+if [ ! -d naoqi_libqi ]; then
 	tar cvf 2.5.0-3.tar.gz &&\
 	mv libqi-release-release-kinetic-naoqi_libqi-2.5.0-3 naoqi_libqi &&\
 	rm 2.5.0-3.tar.gz
-
+else
+	rm 2.5.0-3.tar.gz
+fi
 
 # naoqi_libqicore is already installed!
-
 # nao_robot (is really necesary inside pepper?)
 # git clone https://github.com/uchile-robotics-forks/nao_robot.git
 
@@ -104,11 +116,62 @@ sed -i '/find_package(Boost*/i set(Boost_INCLUDE_DIR "/tmp/gentoo/usr/include")'
 sed -i '/find_package(Boost*/i set(Boost_INCLUDE_DIR "/tmp/gentoo/usr/include")' naoqi_dcm_driver/CMakeLists.txt
 sed -i '/find_package(Boost*/i set(Boost_INCLUDE_DIR "/tmp/gentoo/usr/include")' pepper_dcm_robot/pepper_dcm_bringup/CMakeLists.txt
 
-cd $PKGS
+
+# Making Symbolic Links 
+
+cd $ROS/forks_ws/src
+
+rm *
+ln -s $PKGS/forks/srrg_depth2laser_ros ./srrg_depth2laser_ros
+ln -s $PKGS/forks/interactive_markers ./interactive_markers
+ln -s $PKGS/forks/cv_bridge ./cv_bridge
+ln -s $PKGS/forks/pepper ./pepper
+
+# Compile Forks
+
+echo -e $sline "\n Compiling forks_ws ... \n" $iline
+cd $ROS/forks_ws && catkin_make -DCATKIN_ENABLE_TESTING=0 && source devel/setup.sh
+
+
+
+##################
+#     BASE       #
+##################
+
+echo -e $sline "\n Downloading Base Packages ... \n" $iline
+
+mkdir $PKGS/base
+cd $PKGS/base
+
+# uchile_common
+git clone -b feat-pepper-kinetic https://github.com/uchile-robotics/uchile_common.git
+# sed -i '/find_package(Boost*/i set(Boost_INCLUDE_DIR "/tmp/gentoo/usr/include")' $UCHSRC/uchile_common/uchile_tf/CMakeLists.txt
+
+# uchile_knowledge
+git clone -b feat-pepper-kinetic https://github.com/uchile-robotics/uchile_knowledge.git
+
+
+# Making Symbolic Links 
+
+cd $ROS/base_ws/src
+rm *
+ln -s $PKGS/base/uchile_common uchile_common
+ln -s $PKGS/base/uchile_knowledge uchile_knowledge
+
+# Compile base
+
+echo -e $sline "\n Compiling base_ws.... \n" $iline
+cd $ROS/base_ws && catkin_make && source devel/setup.sh
+
 
 ##################
 #     SOFT       #
 ##################
+
+echo -e $sline "\n Downloading Soft Packages ... \n" $iline
+
+mkdir $PKGS/soft
+cd $PKGS/soft
 
 # uchile_navigation
 git clone -b feat-pepper-kinetic https://github.com/uchile-robotics/uchile_navigation.git
@@ -142,10 +205,36 @@ sed -i 's/#include_next <stdlib.h>/#include <stdlib.h>/1' /tmp/gentoo/usr/lib/gc
 sed -i 's/#include_next <stdlib.h>/#include <stdlib.h>/1' /tmp/gentoo/usr/lib/gcc/i686-pc-linux-gnu/8.2.0/include/g++-v8/bits/std_abs.h
 sed -i 's/#include_next <math.h>/#include <math.h>/1' /tmp/gentoo/usr/lib/gcc/i686-pc-linux-gnu/8.2.0/include/g++-v8/cmath
 
+# visual tools problem
+grep -v "rviz_visual_tools" uchile_perception/uchile_object/CMakeLists.txt > uchile_perception/uchile_object/CMakeLists.tmp && \
+			mv uchile_perception/uchile_object/CMakeLists.tmp uchile_perception/uchile_object/CMakeLists.txt
+
+
+# Making Symbolic Links 
+
+cd $ROS/soft_ws/src
+rm *
+ln -s $PKGS/soft/uchile_perception uchile_perception
+ln -s $PKGS/soft/uchile_navigation uchile_navigation
+ln -s $PKGS/soft/visual_localization visual_localization
+ln -s $PKGS/soft/uchile_hri uchile_hri
+
+# Compile forks
+
+echo -e $sline "\n Compiling soft_ws.... \n" $iline
+cd $ROS/soft_ws && catkin_make && source devel/setup.sh
+
+
 
 ##################
 #      HIGH      #
 ##################
+
+echo -e $sline "\n Downloading High Packages ... \n" $iline
+
+mkdir $PKGS/high
+cd $PKGS/high
+
 
 # maqui_bringup
 git clone https://github.com/uchile-robotics/maqui_bringup.git
@@ -157,46 +246,17 @@ rm -rf uchile_high/bender_skills/
 sed -i '/bender_skills/d' uchile_high/uchile_demos/CMakeLists.txt
 
 
-grep -v "rviz_visual_tools" uchile_perception/uchile_object/CMakeLists.txt > uchile_perception/uchile_object/CMakeLists.tmp && \
-			mv uchile_perception/uchile_object/CMakeLists.tmp uchile_perception/uchile_object/CMakeLists.txt
 
-
-
-echo -e $sline "\n Creating Symbolic links .... \n" $iline
-
-cd $ROS 
-mkdir -p forks_ws/src base_ws/src soft_ws/src high_ws/src
-
-cd $ROS/forks_ws/src
-ln -s $PKGS/srrg_depth2laser_ros srrg_depth2laser_ros
-ln -s $PKGS/interactive_markers interactive_markers
-ln -s $PKGS/pepper pepper
-
-cd $ROS/base_ws/src
-ln -s $PKGS/uchile_common uchile_common
-ln -s $PKGS/uchile_knowledge uchile_knowledge
-
-cd $ROS/soft_ws/src
-ln -s $PKGS/uchile_perception uchile_perception
-ln -s $PKGS/uchile_navigation uchile_navigation
-ln -s $PKGS/visual_localization visual_localization
-ln -s $PKGS/uchile_hri uchile_hri
-
+# Making Symbolic Links 
 cd $ROS/high_ws/src
-ln -s $PKGS/maqui_bringup maqui_bringup
-ln -s $PKGS/uchile_high uchile_high
+rm *
+ln -s $PKGS/high/maqui_bringup maqui_bringup
+ln -s $PKGS/high/uchile_high uchile_high
 
-echo -e $sline "\n Compiling .... \n" $iline
-
-echo -e $sline "\n Compiling forks_ws.... \n" $iline
-cd $ROS/forks_ws && catkin_make && source devel/setup.sh
-
-echo -e $sline "\n Compiling base_ws.... \n" $iline
-cd $ROS/base_ws && catkin_make && source devel/setup.sh
-
-echo -e $sline "\n Compiling soft_ws.... \n" $iline
-cd $ROS/soft_ws && catkin_make && source devel/setup.sh
+# Compiling	
 
 echo -e $sline "\n Compiling high_ws.... \n" $iline
 cd $ROS/high_ws && catkin_make && source devel/setup.sh
+
+
 
