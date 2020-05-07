@@ -13,7 +13,11 @@ COPY scripts/maqui_* /home/nao/
 
 RUN export DOCKER_FLAG=1 && bash maqui_install.sh
 
-# RUN bash pytorch_installer.sh
+COPY scripts/tensorflow_upg.sh /home/nao/
+RUN bash tensorflow_upg.sh
+
+COPY scripts/pytorch_installer.sh /home/nao/
+RUN bash pytorch_installer.sh
 
 # SHELL 
 RUN mv shell/uchile.sh . &&\
