@@ -19,16 +19,16 @@ mkdir -p forks_ws/src base_ws/src soft_ws/src high_ws/src
 
 cd $PP_INS
 
-# bash pepper_install_forks_ws.sh
+bash maqui_install_forks_ws.sh
 source $ROS/forks_ws/devel/setup.bash
 
-# bash pepper_install_base_ws.sh
+bash maqui_install_base_ws.sh
 source $ROS/base_ws/devel/setup.bash
 
-bash pepper_install_soft_ws.sh
+bash maqui_install_soft_ws.sh
 source $ROS/soft_ws/devel/setup.bash
 
-bash pepper_install_high_ws.sh
+bash maqui_install_high_ws.sh
 source $ROS/high_ws/devel/setup.bash
 
 

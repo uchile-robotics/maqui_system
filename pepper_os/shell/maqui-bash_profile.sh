@@ -5,13 +5,11 @@ if [ ! -L /tmp/gentoo ]; then
   ln -s /home/nao/gentoo gentoo
 fi
 
-
 export PATH=~/.local/bin:$PATH
 export PYTHONPATH=/home/nao/.local/pynaoqi-python2.7-2.5.5.5-linux32/lib/python2.7/site-packages
 source /tmp/gentoo/opt/ros/melodic/setup.bash
 export CATKIN_PREFIX_PATH=/tmp/gentoo/opt/ros/melodic
 export ROS_LANG_DISABLE=genlisp:geneus
-
 
 source ${HOME}/uchile.sh
 
@@ -28,8 +26,6 @@ fi
 echo "Using ROS_IP: $ROS_IP"
 echo "Using ROS_MASTER: $ROS_MASTER_URI"
 echo "Using ROS_NETWORK_INTERFACE: $ROS_NETWORK_INTERFACE"
-
-
 
 case $- in
     *i*) ;;

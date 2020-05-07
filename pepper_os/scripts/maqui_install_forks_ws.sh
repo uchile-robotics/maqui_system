@@ -4,12 +4,10 @@
 
 # Dependencias 
 # emerge ros-melodic/octomap	
-
 echo -e $sline "\n Downloading Forks Packages ... \n" $iline
 
 # create dir if it not 
 mkdir -p $PKGS/forks
-
 cd $PKGS/forks
 
 # Download Forks Packages
@@ -34,6 +32,7 @@ fi
 
 cd $PKGS/forks
 
+# we may need an specific version of cv_bridge
 # git clone -b kinetic https://github.com/ros-perception/vision_opencv.git  # problems with the cv_brdige version in gentoo_prefix
 # mv vision_opencv/cv_bridge . && rm -rf vision_opencv
 
@@ -69,7 +68,7 @@ if [ ! -f  2.5.0-3.tar.gz ] && [ ! -d naoqi_libqi ]; then
 fi
 
 if [ ! -d naoqi_libqi ]; then
-	tar cvf 2.5.0-3.tar.gz &&\
+	tar -xvf 2.5.0-3.tar.gz &&\
 	mv libqi-release-release-kinetic-naoqi_libqi-2.5.0-3 naoqi_libqi &&\
 	rm 2.5.0-3.tar.gz
 else
@@ -77,6 +76,7 @@ else
 fi
 
 # naoqi_libqicore is already installed!
+
 # nao_robot 
 # git clone https://github.com/uchile-robotics-forks/nao_robot.git #(is really necesary inside pepper?)
 
@@ -88,7 +88,6 @@ git clone -b feat-pepper-kinetic https://github.com/uchile-robotics-forks/pepper
 
 # pepper_virtual
 git clone https://github.com/uchile-robotics-forks/pepper_virtual.git && rm -rf pepper_virtual/pepper_gazebo_plugin/ # pepper virtual (is really necesary inside pepper?)
-
 
 # Fix Cmake issues in pepper 
 # sed -i '/find_package(Boost*/i set(Boost_INCLUDE_DIR "/tmp/gentoo/usr/include")' naoqi_bridge/naoqi_sensors_py/CMakeLists.txt
@@ -104,6 +103,5 @@ ln -s $PKGS/forks/interactive_markers ./interactive_markers
 ln -s $PKGS/forks/pepper ./pepper
 
 # Compile Forks
-
 echo -e $sline "\n Compiling forks_ws ... \n" $iline
-cd $ROS/forks_ws && catkin_make -DCATKIN_ENABLE_TESTING=0 #&& source devel/setup.sh
+cd $ROS/forks_ws && catkin_make -DCATKIN_ENABLE_TESTING=0

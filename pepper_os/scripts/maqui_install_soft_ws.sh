@@ -11,9 +11,13 @@ cd $PKGS/soft
 git clone -b feat-melodic-twist-recovery https://github.com/uchile-robotics/uchile_navigation.git
 cd uchile_navigation && rm -rf base_local_planner && cd .. # we dont need that in pepper
 
-
-# uchile_perception
-git clone -b feat-melodic https://github.com/uchile-robotics/uchile_perception.git
+# uchile_perception (private repo)
+if [ -z "$DOCKER_FLAG" ]
+then
+	git clone -b feat-melodic https://github.com/uchile-robotics/uchile_perception.git
+else
+    cp -r ${HOME}/repos/uchile_perception .
+fi
 
 # keep uchile_perception_utils, uchile_libs, uchile_object, uchile_furnitures, rm everything else
 rm -rf uchile_perception/uchile_deep/ \
@@ -32,8 +36,6 @@ rm -rf uchile_hri/display_interface/ \
 	   uchile_hri/uchile_speech_web/
 
 # Fixing Cmake issues
-
-
 cp uchile_hri/uchile_speech_web_pepper/CMakeLists.txt uchile_hri/uchile_speech_web_pepper/CMakeLists.txt.bp
 cp visual_localization/CMakeLists.txt visual_localization/CMakeLists.txt.bp
 
@@ -41,9 +43,7 @@ sed -i 's/find_package(Boost REQUIRED COMPONENTS system signals thread)/find_pac
 sed -i '/${catkin_INCLUDE_DIRS}/i ${Boost_INCLUDE_DIR}/1' uchile_hri/uchile_speech_web_pepper/CMakeLists.txt
 sed -i 's/find_package(Boost REQUIRED COMPONENTS signals)/find_package(Boost)/1' visual_localization/CMakeLists.txt
 
-
-# no son necesarios !!ls
-
+# ya no son necesarios !!
 # sed -i '/find_package(PCL 1.7*/i /set(pcl_INCLUDE_DIRS "/home/nao/gentoo/usr/include/pcl-1.8/")' 	uchile_navigation_utils/CMakeLists.txt 
 # sed -i '/find_package(PCL 1.7*/i /set(pcl_INCLUDE_DIRS "/home/nao/gentoo/usr/include/pcl-1.8/")' 	uchile_nav/CMakeLists.txt 
 # sed -i '/find_package(Boost*/i set(Boost_INCLUDE_DIR "/tmp/gentoo/usr/include")' uchile_hri/uchile_speech_web_pepper/CMakeLists.txt
@@ -59,9 +59,7 @@ sed -i 's/find_package(Boost REQUIRED COMPONENTS signals)/find_package(Boost)/1'
 grep -v "rviz_visual_tools" uchile_perception/uchile_object/CMakeLists.txt > uchile_perception/uchile_object/CMakeLists.tmp && \
 			mv uchile_perception/uchile_object/CMakeLists.tmp uchile_perception/uchile_object/CMakeLists.txt
 
-
 # Making Symbolic Links 
-
 cd $ROS/soft_ws/src
 rm * # remove previous links
 ln -s $PKGS/soft/uchile_perception uchile_perception
@@ -70,6 +68,5 @@ ln -s $PKGS/soft/visual_localization visual_localization
 ln -s $PKGS/soft/uchile_hri uchile_hri
 
 # Compile Soft
-
 echo -e $sline "\n Compiling soft_ws.... \n" $iline
-cd $ROS/soft_ws && catkin_make && source devel/setup.sh
+cd $ROS/soft_ws && catkin_make 
