@@ -99,3 +99,13 @@ Ejecutar lo siguiente en una terminal de la máquina virtual.
 wget -q -O - https://raw.githubusercontent.com/uchile-robotics/maqui_system/master/maqui_internal_installer.sh | bash
 ```
 
+### Sobre el desarrollo de Software para Pepper y el uso de la VM para compilar
+
+Los pasos anteriormente descritos son para replicar la instalación de ROS indigo y uchile_ws para maqui desde 0. Esto no es algo que se realiza comúnmente dado que es largo y tedioso. En los archivos del laboratorio  se tiene una versión actualizada de la VM con el último software utilizado en el robot Pepper (preguntar a su respectivo senpai/tutor como conseguirla). El ciclo de desarrollo común corresponde a:
+
+- Conseguir la última versión de la VM
+- Lanzar la VM y desde la línea de comando compilar lo que se necesita
+- Antes de subir cambios drásticos al robot (y menores también), asegúrate de tener un respaldo para poder restaurar la última versión funcional
+- Subir y probar en el robot, si es exitoso, esta VM se convierte en la última versión y debe ser salvaguardada
+- Si falla, seguir probando, es probable que necesites compilar dependencias cuyas versiones discrepan entre el robot y la máquina virtual. Si falla de manera drástica, restaurar la versión anterior.
+- Escribir script para replicar el proceso de compilación y subirlo a este repositorio, de manera que el proceso sea replicable.
